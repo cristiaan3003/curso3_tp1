@@ -3,6 +3,8 @@ package com.cristian.curso3_tp1;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -29,15 +31,31 @@ public class MainActivity extends AppCompatActivity {
         mascotas.add(new Mascota("Mascota 3",0,R.drawable.perro3));
         mascotas.add(new Mascota("Mascota 4",0,R.drawable.perro4));
 
-        ArrayList nombre_mascota=new ArrayList<String>();
 
+        /*
+        ArrayList nombre_mascota=new ArrayList<String>();
 
         for(Iterator<Mascota> i = mascotas.iterator(); i.hasNext(); ) {
             nombre_mascota.add(i.next().getNombre());
         }
-
         ListView lstMascota= (ListView)findViewById(R.id.listView);
         lstMascota.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,nombre_mascota));
+        */
+
+        RecyclerView rv = (RecyclerView)findViewById(R.id.rv);
+
+        //Ejemplo
+        //LinearLayoutManager llm = new LinearLayoutManager(this);
+        //llm.setOrientation(LinearLayoutManager.VERTICAL);
+        //list.setLayoutManager(llm);
+        //list.setAdapter( adapter );
+
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        rv.setLayoutManager(llm);
+
+        RVAdapter adapter = new RVAdapter(mascotas);
+        rv.setAdapter(adapter);
 
 
     }

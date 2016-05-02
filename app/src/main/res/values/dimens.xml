@@ -6,4 +6,5 @@
     <dimen name="ancho_tam_img_perro">200dp</dimen>
     <dimen name="alto_tam_img_perro">200dp</dimen>
     <dimen name="card_medida">300dp</dimen>
+    <dimen name="nombre_perro_margin">20dp</dimen>
 </resources>
