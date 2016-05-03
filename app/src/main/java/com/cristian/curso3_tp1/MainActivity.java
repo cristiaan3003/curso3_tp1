@@ -30,19 +30,13 @@ public class MainActivity extends AppCompatActivity {
         mascotas.add(new Mascota("Mascota 2",0,R.drawable.perro2));
         mascotas.add(new Mascota("Mascota 3",0,R.drawable.perro3));
         mascotas.add(new Mascota("Mascota 4",0,R.drawable.perro4));
+        mascotas.add(new Mascota("Mascota 5",0,R.drawable.perro5));
+        mascotas.add(new Mascota("Mascota 6",0,R.drawable.perro6));
+        mascotas.add(new Mascota("Mascota 7",0,R.drawable.perro7));
 
-
-        /*
-        ArrayList nombre_mascota=new ArrayList<String>();
-
-        for(Iterator<Mascota> i = mascotas.iterator(); i.hasNext(); ) {
-            nombre_mascota.add(i.next().getNombre());
-        }
-        ListView lstMascota= (ListView)findViewById(R.id.listView);
-        lstMascota.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,nombre_mascota));
-        */
 
         RecyclerView rv = (RecyclerView)findViewById(R.id.rv);
+        rv.setHasFixedSize(true);
 
         //Ejemplo
         //LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -65,4 +59,5 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
 }

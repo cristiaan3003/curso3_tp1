@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="16dp"
     >
 
@@ -15,6 +15,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="16dp"
             >
 
             <ImageView
@@ -39,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/nombre_perro"
                 android:text="nombre"
-                android:textSize="30dp"
+                android:textSize="25dp"
                 android:layout_toRightOf="@id/iconoHueso"
                 android:layout_below="@id/imagenPerro"
                 android:layout_marginLeft="@dimen/nombre_perro_margin"
@@ -60,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/rating"
                 android:text="5"
-                android:textSize="30dp"
+                android:textSize="25dp"
                 android:layout_below="@id/imagenPerro"
                 android:layout_toLeftOf="@id/iconoHuesoColor"
                 />

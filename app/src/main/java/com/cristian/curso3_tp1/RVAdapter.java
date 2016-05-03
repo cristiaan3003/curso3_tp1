@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MascotaViewHolder>
         TextView mascotaName;
         TextView mascotaRanting;
         ImageView mascotaPhoto;
+        ImageView iconoHueso;
 
         MascotaViewHolder(View itemView) {
             super(itemView);
@@ -28,8 +30,12 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MascotaViewHolder>
             mascotaName = (TextView)itemView.findViewById(R.id.nombre_perro);
             mascotaRanting = (TextView)itemView.findViewById(R.id.rating);
             mascotaPhoto = (ImageView)itemView.findViewById(R.id.imagenPerro);
+            iconoHueso =(ImageView)itemView.findViewById(R.id.iconoHueso);
         }
     }
+
+
+
     ArrayList<Mascota> mascotas;
 
     RVAdapter(ArrayList<Mascota> mascotas){
@@ -49,15 +55,32 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MascotaViewHolder>
 
     @Override
     public void onBindViewHolder(MascotaViewHolder mascotaViewHolder, int i) {
-        mascotaViewHolder.mascotaName.setText(mascotas.get(i).getNombre());
-        mascotaViewHolder.mascotaRanting.setText(String.valueOf(mascotas.get(i).getRanting()));
-        mascotaViewHolder.mascotaPhoto.setImageResource(mascotas.get(i).getImagen());
+        final Mascota masco=mascotas.get(i);
+        mascotaViewHolder.mascotaName.setText(masco.getNombre());
+        mascotaViewHolder.mascotaPhoto.setImageResource(masco.getImagen());
+        mascotaViewHolder.mascotaRanting.setText(String.valueOf(0));
+
+        //seteo bandera (tag) a iconohueso para trabajarlo dentro del onClick
+        //que sino no me deja
+        mascotaViewHolder.iconoHueso.setTag(mascotaViewHolder);
+
+        mascotaViewHolder.iconoHueso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MascotaViewHolder mH = (MascotaViewHolder) v.getTag();
+
+                mH.mascotaRanting.setText(String.valueOf(1+Integer.parseInt(mH.mascotaRanting.getText().toString())));
+
+            }
+        });
+
     }
 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
     }
+
 
 
 }
