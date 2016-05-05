@@ -17,6 +17,8 @@ import java.util.List;
  */
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MascotaViewHolder>{
 
+
+
     public static class MascotaViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
         TextView mascotaName;
@@ -32,6 +34,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MascotaViewHolder>
             mascotaPhoto = (ImageView)itemView.findViewById(R.id.imagenPerro);
             iconoHueso =(ImageView)itemView.findViewById(R.id.iconoHueso);
         }
+
     }
 
 
@@ -41,10 +44,13 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MascotaViewHolder>
     RVAdapter(ArrayList<Mascota> mascotas){
         this.mascotas = mascotas;
     }
+
     @Override
     public int getItemCount() {
         return mascotas.size();
     }
+
+
 
     @Override
     public MascotaViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
@@ -58,18 +64,16 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MascotaViewHolder>
         final Mascota masco=mascotas.get(i);
         mascotaViewHolder.mascotaName.setText(masco.getNombre());
         mascotaViewHolder.mascotaPhoto.setImageResource(masco.getImagen());
-        mascotaViewHolder.mascotaRanting.setText(String.valueOf(0));
+        mascotaViewHolder.mascotaRanting.setText(String.valueOf(masco.getRanting()));
 
-        //seteo bandera (tag) a iconohueso para trabajarlo dentro del onClick
-        //que sino no me deja
-        mascotaViewHolder.iconoHueso.setTag(mascotaViewHolder);
+       mascotaViewHolder.iconoHueso.setTag(mascotaViewHolder);
 
+       if (masco.getRanting()==0)
         mascotaViewHolder.iconoHueso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MascotaViewHolder mH = (MascotaViewHolder) v.getTag();
-
-                mH.mascotaRanting.setText(String.valueOf(1+Integer.parseInt(mH.mascotaRanting.getText().toString())));
+                mH.mascotaRanting.setText(String.valueOf(1 + Integer.parseInt(mH.mascotaRanting.getText().toString())));
 
             }
         });
@@ -80,6 +84,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MascotaViewHolder>
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
     }
+
 
 
 

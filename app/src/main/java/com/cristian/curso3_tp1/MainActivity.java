@@ -17,6 +17,7 @@ import java.util.Iterator;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList mascotas;
+    boolean bandera;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
